@@ -1,0 +1,8 @@
+              precision    recall  f1-score   support
+
+  No landing       1.00      0.50      0.67         6
+     Landing       0.80      1.00      0.89        12
+
+    accuracy                           0.83        18
+   macro avg       0.90      0.75      0.78        18
+weighted avg       0.87      0.83      0.81        18

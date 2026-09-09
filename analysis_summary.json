@@ -1,0 +1,133 @@
+{
+  "rows": 90,
+  "success_rate": 0.6666666666666666,
+  "best_model": "SVM",
+  "best_test_accuracy": 0.8333333333333334,
+  "site_summary": [
+    {
+      "LaunchSite": "CCSFS SLC 40",
+      "Launches": 55,
+      "SuccessRate": 0.6
+    },
+    {
+      "LaunchSite": "KSC LC 39A",
+      "Launches": 22,
+      "SuccessRate": 0.7727272727272727
+    },
+    {
+      "LaunchSite": "VAFB SLC 4E",
+      "Launches": 13,
+      "SuccessRate": 0.7692307692307693
+    }
+  ],
+  "orbit_summary": [
+    {
+      "index": 0,
+      "Orbit": "ES-L1",
+      "mean": 1.0,
+      "count": 1
+    },
+    {
+      "index": 1,
+      "Orbit": "GEO",
+      "mean": 1.0,
+      "count": 1
+    },
+    {
+      "index": 3,
+      "Orbit": "HEO",
+      "mean": 1.0,
+      "count": 1
+    },
+    {
+      "index": 9,
+      "Orbit": "SSO",
+      "mean": 1.0,
+      "count": 5
+    },
+    {
+      "index": 10,
+      "Orbit": "VLEO",
+      "mean": 0.8571428571428571,
+      "count": 14
+    },
+    {
+      "index": 5,
+      "Orbit": "LEO",
+      "mean": 0.7142857142857143,
+      "count": 7
+    },
+    {
+      "index": 7,
+      "Orbit": "PO",
+      "mean": 0.6666666666666666,
+      "count": 9
+    },
+    {
+      "index": 6,
+      "Orbit": "MEO",
+      "mean": 0.6666666666666666,
+      "count": 3
+    },
+    {
+      "index": 4,
+      "Orbit": "ISS",
+      "mean": 0.6190476190476191,
+      "count": 21
+    },
+    {
+      "index": 2,
+      "Orbit": "GTO",
+      "mean": 0.5185185185185185,
+      "count": 27
+    },
+    {
+      "index": 8,
+      "Orbit": "SO",
+      "mean": 0.0,
+      "count": 1
+    }
+  ],
+  "yearly": [
+    {
+      "Year": 2010,
+      "Class": 0.0
+    },
+    {
+      "Year": 2012,
+      "Class": 0.0
+    },
+    {
+      "Year": 2013,
+      "Class": 0.0
+    },
+    {
+      "Year": 2014,
+      "Class": 0.3333333333333333
+    },
+    {
+      "Year": 2015,
+      "Class": 0.3333333333333333
+    },
+    {
+      "Year": 2016,
+      "Class": 0.625
+    },
+    {
+      "Year": 2017,
+      "Class": 0.8333333333333334
+    },
+    {
+      "Year": 2018,
+      "Class": 0.6111111111111112
+    },
+    {
+      "Year": 2019,
+      "Class": 0.9
+    },
+    {
+      "Year": 2020,
+      "Class": 0.8421052631578947
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+Model,CVAccuracy,TestAccuracy,BestParameters
+SVM,0.8482142857142858,0.8333333333333334,"{""C"": 1.0, ""gamma"": 0.03162277660168379, ""kernel"": ""sigmoid""}"
+Logistic regression,0.8214285714285714,0.8333333333333334,"{""C"": 0.1, ""penalty"": ""l2"", ""solver"": ""lbfgs""}"
+Decision tree,0.8732142857142857,0.7777777777777778,"{""criterion"": ""gini"", ""max_depth"": 4, ""max_features"": null, ""min_samples_leaf"": 4}"
+KNN,0.8339285714285714,0.7777777777777778,"{""algorithm"": ""auto"", ""n_neighbors"": 3, ""p"": 1}"
