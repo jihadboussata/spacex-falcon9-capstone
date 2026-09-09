@@ -6,7 +6,11 @@ from dash import Input, Output, dcc, html
 import pandas as pd
 import plotly.express as px
 
-DATA_PATH = Path(__file__).parent / "data" / "dataset_part_2.csv"
+PROJECT_DIR = Path(__file__).parent
+DATA_PATH = PROJECT_DIR / "data" / "dataset_part_2.csv"
+if not DATA_PATH.exists():
+    # GitHub's browser uploader may place the project files in the repository root.
+    DATA_PATH = PROJECT_DIR / "dataset_part_2.csv"
 spacex_df = pd.read_csv(DATA_PATH)
 
 app = dash.Dash(__name__)
