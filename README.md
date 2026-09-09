@@ -14,14 +14,12 @@ Can public launch records help explain and predict whether the Falcon 9 first st
 - KSC LC 39A achieved a 77.3% success rate in this sample, while CCSFS SLC 40 handled the most launches.
 - SVM and K-nearest neighbors both reached 83.3% test accuracy. SVM had the stronger cross-validation result and was selected as the final model.
 
-## Repository structure
+## Repository contents
 
-```text
-assets/       Charts and presentation evidence
-data/         Cleaned, encoded, geographic, and model-result files
-notebooks/    Completed capstone notebooks
-spacex_dash_app.py
-```
+- Completed capstone notebooks
+- Cleaned, encoded, geographic, and model-result datasets
+- Charts and presentation evidence
+- `spacex_dash_app.py`, the interactive dashboard application
 
 ## Run locally
 
