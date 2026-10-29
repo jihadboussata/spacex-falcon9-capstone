@@ -1,0 +1,5 @@
+model,cv_average_precision,validation_average_precision,best_parameters
+logistic_regression,0.7833129833129832,0.9759432234432235,{'model__C': 1}
+decision_tree,0.8131410256410256,0.9083333333333333,"{'model__max_depth': 3, 'model__min_samples_leaf': 2}"
+knn,0.7349067599067599,0.8508403361344538,{'model__n_neighbors': 7}
+svm,0.8597658128908129,0.8416021941021941,"{'model__C': 0.1, 'model__kernel': 'rbf'}"

@@ -1,37 +1,64 @@
-# SpaceX Falcon 9 Landing Prediction Capstone
+# Falcon 9 landing outcomes
 
-This repository contains the completed notebooks, datasets, visual evidence, and dashboard application for the IBM Data Science Professional Certificate capstone.
+**How much can a small launch-history dataset tell us about first-stage landing outcomes?** An IBM capstone extended with reproducible model selection, a chronological holdout, baseline comparisons and a Dash explorer.
 
-## Project question
+Jihad Boussata · Python · scikit-learn · SQL/EDA coursework · Plotly Dash
 
-Can public launch records help explain and predict whether the Falcon 9 first stage will land successfully?
+![Fresh chronological evaluation](results/evaluation.png)
 
-## Main results
+## Result and uncertainty
 
-- The analysis covers 90 Falcon 9 launches from 2010 through 2020.
-- 60 launches landed successfully, giving an overall success rate of 66.7%.
-- Landing performance improved substantially after 2013.
-- KSC LC 39A achieved a 77.3% success rate in this sample, while CCSFS SLC 40 handled the most launches.
-- SVM and K-nearest neighbors both reached 83.3% test accuracy. SVM had the stronger cross-validation result and was selected as the final model.
+| Chronological test | Selected logistic model | Training-prior baseline |
+| --- | --- | --- |
+| Correct launches | 16 / 18 | 15 / 18 |
+| Accuracy | 88.9% | 83.3% |
+| Balanced accuracy | 0.667 | 0.500 |
+| ROC AUC | 0.667 | 0.500 |
 
-## Repository contents
+This is a **90-launch 2010–2020 course snapshot**, not current SpaceX coverage. Test contains only 18 launches, including three unsuccessful outcomes. The selected model's exact binomial 95% accuracy interval is approximately 65.3%–98.6%. Its one-launch advantage over the baseline is insufficient evidence of a reliable forecasting improvement; chronological dependence further limits the binomial interpretation.
 
-- Completed capstone notebooks
-- Cleaned, encoded, geographic, and model-result datasets
-- Charts and presentation evidence
-- `spacex_dash_app.py`, the interactive dashboard application
+## Reproduce
 
-## Run locally
+Use Python 3.12, activate a virtual environment, then run from this directory:
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
+python -m unittest discover -s tests -v
+python -m spacex.train
+```
+
+The source snapshot is already in `data/`. Fresh metrics, predictions, selection tables and the figure are written to `results/`. For the dashboard:
+
+```bash
+python -m pip install -r requirements-dashboard.txt
 python spacex_dash_app.py
 ```
 
-Then open the local Dash URL shown in the terminal.
+Open `http://127.0.0.1:8050`. Site filters and a full-range payload slider cover all known payload masses; five unknown payloads are excluded from the scatter plot.
 
-## Notes on reproducibility
+## What changed in the evaluation
 
-The data-collection notebook includes the IBM course snapshot because the historical SpaceX community API endpoint used in the original lab is no longer consistently available. The supplied snapshot preserves the course dataset and makes the downstream analysis reproducible.
+- Split ordered launches into 54 training, 18 validation and 18 test records. Hyperparameter search uses expanding training windows, with a one-launch gap.
+- Fit imputation, scaling and encoding inside each training fold; the course notebook previously scaled before splitting.
+- Restore the five payloads previously filled with the upstream global mean to missing, then learn fold-specific medians.
+- Use launch configuration features; exclude the outcome string, target, landing-pad identifier, core serial and API-snapshot reuse count.
+- Compare logistic regression, SVM, decision trees and KNN. Select the model and F1 decision threshold on validation, then freeze both before test.
+- Compare with a train-prior baseline and report minority-class behavior and small-sample uncertainty.
+
+## Repository guide
+
+| Path | Purpose |
+| --- | --- |
+| spacex/ | Reproducible training and evaluation |
+| spacex_dash_app.py | Historical-data explorer |
+| data/ | Original course snapshots and data documentation |
+| results/ | Authoritative portfolio results |
+| tests/ | Preprocessing and feature-availability checks |
+| archive/ | Original course notebooks and older outputs; historical context only |
+| docs/ | Protocol, limitations and change record |
+
+## Interpretation and attribution
+
+The label combines landing failure with records where there was no successful recovery attempt. Grid fins and legs partly encode mission intent, so this is not a physics model of landing reliability. The upstream API extraction is a retrospective snapshot; historical point-in-time availability is not fully verified. Generalization to later launch generations is unknown.
+
+The repository originated in the **Applied Data Science Capstone**, part of the **IBM Data Science Professional Certificate**. Course templates and source notices are preserved in the archive. Data originated from the SpaceX API and Wikipedia exercises used by IBM. New portfolio implementation is MIT licensed; upstream material retains its notices. See [data provenance](data/README.md), [methodology](docs/METHODOLOGY.md) and [changes](docs/CHANGES.md).

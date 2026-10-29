@@ -1,0 +1,107 @@
+{
+  "selected_model": "logistic_regression",
+  "selection": [
+    {
+      "model": "logistic_regression",
+      "cv_average_precision": 0.7833129833129832,
+      "validation_average_precision": 0.9759432234432235,
+      "best_parameters": {
+        "model__C": 1
+      }
+    },
+    {
+      "model": "decision_tree",
+      "cv_average_precision": 0.8131410256410256,
+      "validation_average_precision": 0.9083333333333333,
+      "best_parameters": {
+        "model__max_depth": 3,
+        "model__min_samples_leaf": 2
+      }
+    },
+    {
+      "model": "knn",
+      "cv_average_precision": 0.7349067599067599,
+      "validation_average_precision": 0.8508403361344538,
+      "best_parameters": {
+        "model__n_neighbors": 7
+      }
+    },
+    {
+      "model": "svm",
+      "cv_average_precision": 0.8597658128908129,
+      "validation_average_precision": 0.8416021941021941,
+      "best_parameters": {
+        "model__C": 0.1,
+        "model__kernel": "rbf"
+      }
+    }
+  ],
+  "features": [
+    "PayloadMass",
+    "Flights",
+    "Block",
+    "GridFins",
+    "Reused",
+    "Legs",
+    "Orbit",
+    "LaunchSite"
+  ],
+  "restored_missing_payloads": 5,
+  "test": {
+    "accuracy": 0.8888888888888888,
+    "accuracy_95pct_exact_interval": [
+      0.6528795613909626,
+      0.9862487843356355
+    ],
+    "balanced_accuracy": 0.6666666666666666,
+    "average_precision": 0.9031743637625991,
+    "roc_auc": 0.6666666666666667,
+    "precision": 0.8823529411764706,
+    "recall": 1.0,
+    "f1": 0.9375,
+    "threshold": 0.7851682584792962
+  },
+  "baseline_test": {
+    "accuracy": 0.8333333333333334,
+    "accuracy_95pct_exact_interval": [
+      0.5858225086052238,
+      0.9642149168784279
+    ],
+    "balanced_accuracy": 0.5,
+    "average_precision": 0.8333333333333334,
+    "roc_auc": 0.5,
+    "precision": 0.8333333333333334,
+    "recall": 1.0,
+    "f1": 0.9090909090909091,
+    "threshold": 0.5
+  },
+  "partitions": {
+    "train": {
+      "rows": 54,
+      "start": "2010-06-04",
+      "end": "2018-07-25",
+      "successes": 30
+    },
+    "validation": {
+      "rows": 18,
+      "start": "2018-08-07",
+      "end": "2020-01-07",
+      "successes": 15
+    },
+    "test": {
+      "rows": 18,
+      "start": "2020-01-19",
+      "end": "2020-11-05",
+      "successes": 15
+    }
+  },
+  "data_sha256": "29852b2f0c716758ee8bc108004dfa166e0296d34fe2b417c61a4161566fe364",
+  "seed": 42,
+  "versions": {
+    "python": "3.12.14",
+    "sklearn": "1.8.0",
+    "pandas": "2.2.3",
+    "numpy": "2.3.5"
+  },
+  "protocol": "First 60% train, next 20% validation, final 20% test; expanding CV on train only; validation selects model and F1 threshold; model is not refitted on validation."
+}
